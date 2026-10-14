@@ -142,7 +142,9 @@ exports.handler = (event, context, LambdaCallback) => {
    
     
     console.log(LambdaCallback.toString())
-    var web3=new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/b2b0259ccd7541938a412ecf9ea62ff1'));
+    // RPC endpoint (e.g. https://<network>.infura.io/v3/<project-id>) comes from the
+    // Lambda's environment variables, never from source.
+    var web3=new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_URL));
   var jsonData2;
   //console.log(__dirname);
   console.log(path.resolve('CryptoFax.json'));
